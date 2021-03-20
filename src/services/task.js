@@ -1,0 +1,28 @@
+import Axios from 'axios'
+
+const getItems = () => Axios.get(`${window.apiUrl}/tasks`)
+
+const getItem = (_id, params = {}) => Axios.get(`${window.apiUrl}/task/${_id}`, {
+  params
+})
+
+const saveItem = (payload) => {
+  if (payload._id) {
+    return Axios.put(`${window.apiUrl}/task`, payload)
+  }
+  return Axios.post(`${window.apiUrl}/task`, payload)
+}
+
+const getEntities = (params = {}) => Axios.get(`${window.apiUrl}/task/entities`, {
+  params
+})
+
+const remove = (_id) => Axios.delete(`${window.apiUrl}/task/${_id}`)
+
+export {
+  getItems,
+  getItem,
+  saveItem,
+  getEntities,
+  remove
+}

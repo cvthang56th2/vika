@@ -15,6 +15,9 @@
         <li>
           <a @click="goTo({ name: 'admin-list-user' })">Users</a>
         </li>
+        <li>
+          <a @click="goTo({ name: 'admin-list-task' })">Tasks</a>
+        </li>
       </ul>
       <section class="wrap-content">
         <router-view />

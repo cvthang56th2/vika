@@ -1,11 +1,11 @@
 <template>
   <div class="main-layout">
-    <Header />
-    <TopNavigation />
-    <section class="wrap-content">
+    <Header class="flex-0-0" />
+    <TopNavigation class="flex-0-0" />
+    <section class="wrap-content flex-1-1 overflow-y-auto">
       <router-view />
     </section>
-    <Footer />
+    <Footer class="flex-0-0" />
   </div>
 </template>
 
@@ -27,5 +27,8 @@ export default {
 <style lang="scss">
 .main-layout {
   padding: 0 5%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 </style>

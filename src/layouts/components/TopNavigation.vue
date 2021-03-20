@@ -1,5 +1,6 @@
 <template>
   <section class="wrap-top-navigation d-flex justify-space-between">
+    <a @click="goTo({ name: 'list-task' })">Tasks</a>
     <a @click="goTo({ name: 'home-page' })">Home</a>
     <a @click="goTo({ name: 'list-quest' })">Quests</a>
     <a>Quizzes</a>
