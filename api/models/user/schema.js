@@ -1,3 +1,5 @@
+import { status } from '@global/options/common-schema.js'
+
 const schema = {
   name: String,
   userName: {
@@ -11,7 +13,8 @@ const schema = {
   roles: [{
     type: String,
     enum: ['SUPER_ADMIN', 'CLIENT', 'MODERATOR']
-  }]
+  }],
+  status
 }
 
 const options = {

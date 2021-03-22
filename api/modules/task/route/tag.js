@@ -1,10 +1,10 @@
-import Controller from '../controller'
-import Validate from '../validate'
+import Controller from '../controller/tag'
+import Validate from '../validate/tag'
 
 export default [
   {
     method: 'POST',
-    path: '/task',
+    path: '/task-tag',
     options: {
       validate: {
         // payload: {
@@ -20,7 +20,7 @@ export default [
   },
   {
     method: 'PUT',
-    path: '/task',
+    path: '/task-tag',
     options: {
       validate: {
         // payload: {
@@ -36,27 +36,22 @@ export default [
   },
   {
     method: 'GET',
-    path: '/tasks',
+    path: '/task-tags',
     handler: Controller.getItems
   },
   {
     method: 'GET',
-    path: '/list-tasks',
-    handler: Controller.getListTask
-  },
-  {
-    method: 'GET',
-    path: '/task/{id}',
+    path: '/task-tag/{id}',
     handler: Controller.getItem
   },
   {
     method: 'DELETE',
-    path: '/task/{id}',
+    path: '/task-tag/{id}',
     handler: Controller.remove
   },
   {
     method: 'GET',
-    path: '/task/entities',
+    path: '/task-tag/entities',
     handler: Controller.getEntities
   }
 ]

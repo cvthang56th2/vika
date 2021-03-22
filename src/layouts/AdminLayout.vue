@@ -18,6 +18,9 @@
         <li>
           <a @click="goTo({ name: 'admin-list-task' })">Tasks</a>
         </li>
+        <li>
+          <a @click="goTo({ name: 'admin-list-task-tag' })">Task Tags</a>
+        </li>
       </ul>
       <section class="wrap-content">
         <router-view />

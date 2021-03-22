@@ -1,21 +1,25 @@
 import AppPopup from './components/app-popup.vue'
+import * as Helpers from '@/helpers'
 
 export default {
   install(Vue) {
     Vue.component(AppPopup.name, AppPopup)
+    Vue.prototype._helpers = Helpers
 
     Vue.mixin({
       data: () => ({}),
 
       methods: Object.assign({
-        successNotify ({ title = 'Success!', message = 'Successfully!' }) {
+        successNotify (options = {}) {
+          const { title = 'Success!', message = 'Successfully!' } = options
           this.$notify({
             type: 'success',
             title,
             text: message
           })
         },
-        warningNotify ({ title = 'Warning!', message = 'Something danger!' }) {
+        warningNotify (options = {}) {
+          const { title = 'Warning!', message = 'Something danger!' } = options
           this.$notify({
             type: 'warn',
             title: title,

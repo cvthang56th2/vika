@@ -1,43 +1,55 @@
 
+
+import { getListTask, saveItem } from '@/services/task'
+
 import VueDraggable from 'vuedraggable'
-import { getItems } from '@/services/task.js'
+import PopupDetail from './popup.detail.vue'
 
 export default {
   name: 'ListTask',
   components: {
-    VueDraggable
+    VueDraggable,
+    PopupDetail
   },
   data: () => ({
-    allTaskArr: [],
-    mappedTask: []
+    mappedTask: [],
+    selectedTask: null,
+    showPopupDetail: false
   }),
   created () {
     this.fetchData()
   },
   methods: {
-    mapTask () {
-      const groupedTaskObj = this.allTaskArr.reduce((resultObj, taskObj) => { // group tag
-        if (taskObj.tag) {
-          // TODO: tạo function helpers ensureArray
-          resultObj[taskObj.tag] = resultObj[taskObj.tag] || []
-          resultObj[taskObj.tag].push(taskObj)
-        }
-        return resultObj
-      }, {})
-      this.mappedTask = Object.keys(groupedTaskObj).map(groupName => ({
-        name: groupName,
-        items: groupedTaskObj[groupName]
-      }))
+    createTask () {
+      this.selectedTask = null
+      this.showPopupDetail = true
     },
-    onDragDropTask (e) {
-      console.log('e', e)
+    openDetailTask (taskObj) {
+      this.selectedTask = taskObj
+      this.showPopupDetail = true
+    },
+    async onDragDropTask (e, tag) {
+      // TODO: update rank
+      if (e.added) {
+        this.setLoading()
+        try {
+          const sendData = {
+            _id: e.added.element._id,
+            tag
+          }
+          await saveItem(sendData)
+          this.successNotify()
+        } catch (error) {
+          this.errorNotify(error)
+        }
+        this.setLoading(false)
+      }
     },
     async fetchData () {
       this.setLoading()
       try {
-        const { data } = await getItems()
-        this.allTaskArr = data || []
-        this.mapTask()
+        const { data } = await getListTask()
+        this.mappedTask = data || []
       } catch (error) {
         this.errorNotify(error)
       }

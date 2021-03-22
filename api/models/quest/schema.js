@@ -1,6 +1,9 @@
+import { status } from '@global/options/common-schema.js'
+
 const schema = {
   name: String,
-  description: String
+  description: String,
+  status
 }
 
 const options = {

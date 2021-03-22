@@ -1,8 +1,4 @@
-const sleep = time => new Promise(resolve => setTimeout(resolve, time))
-const isArray = arr => Array.isArray(arr)
-const isObject = obj => (obj && typeof obj === 'object' && !Array.isArray(obj)) || false
-const ensureArray = (arr, defaultValue) => isArray(arr) ? arr : isArray(defaultValue) ? defaultValue : []
-const ensureObject = (obj, defaultValue) => isObject(obj) ? obj : isObject(defaultValue) ? defaultValue : {}
+import { sleep, isArray, isObject, ensureArray, ensureObject, sortCallBack } from '@global/helpers/general'
 
 const setCookie = (cname, cvalue, exdays) => {
   const d = new Date()
@@ -32,6 +28,7 @@ export {
   isObject,
   ensureArray,
   ensureObject,
+  sortCallBack,
   setCookie,
   getCookie
 }

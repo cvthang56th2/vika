@@ -1,21 +1,14 @@
-// import mongoose from 'mongoose'
 import { status } from '@global/options/common-schema.js'
-import { taskTags } from '@global/options/task.js'
 
 const schema = {
   name: String,
   description: String,
   rank: Number,
-  status,
-  tag: {
-    type: String,
-    enum: taskTags.map(e => e.value),
-    default: 'to-do'
-  }
+  status
 }
 
 const options = {
-  collection: 'tasks',
+  collection: 'task_tags',
   timestamps: true,
   toObject: { virtuals: true },
   toJSON: { virtuals: true }
